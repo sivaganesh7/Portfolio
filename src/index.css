@@ -1,0 +1,445 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #050A14;
+  --bg-secondary: #0A1628;
+  --bg-card: #0D1F3C;
+  --accent-primary: #00FF88;
+  --accent-secondary: #00B359;
+  --text-primary: #F0F6FF;
+  --text-muted: #6B8CAE;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 255, 136, 0.3);
+  color: var(--text-primary);
+}
+
+/* ===== GLITCH ANIMATION ===== */
+@keyframes glitch-1 {
+
+  0%,
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  5% {
+    clip-path: inset(20% 0 60% 0);
+  }
+
+  10% {
+    clip-path: inset(50% 0 30% 0);
+  }
+
+  15% {
+    clip-path: inset(10% 0 70% 0);
+  }
+
+  20% {
+    clip-path: inset(80% 0 5% 0);
+  }
+
+  25% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes glitch-2 {
+
+  0%,
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  5% {
+    clip-path: inset(60% 0 10% 0);
+  }
+
+  10% {
+    clip-path: inset(30% 0 50% 0);
+  }
+
+  15% {
+    clip-path: inset(70% 0 10% 0);
+  }
+
+  20% {
+    clip-path: inset(5% 0 80% 0);
+  }
+
+  25% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  color: var(--accent-primary);
+  animation: glitch-1 4s infinite linear;
+  text-shadow: -2px 0 var(--accent-primary);
+}
+
+.glitch-text::after {
+  color: var(--accent-secondary);
+  animation: glitch-2 4s infinite linear;
+  text-shadow: 2px 0 var(--accent-secondary);
+  animation-delay: 0.1s;
+}
+
+/* ===== SQUARE GRID BACKGROUND ===== */
+.square-grid {
+  background-size: 45px 45px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 255, 136, 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 136, 0.10) 1px, transparent 1px);
+  animation: gridMove 25s linear infinite;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 45px 45px;
+  }
+}
+
+/* ===== FLOATING SQUARES (Lightweight Animation) ===== */
+.floating-squares {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.square-shape {
+  position: absolute;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  background: rgba(0, 255, 136, 0.06);
+  backdrop-filter: blur(2px);
+  animation: floatUp 15s linear infinite;
+  bottom: -150px;
+  border-radius: 4px;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--bg-primary) 120%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== GRADIENT BORDERS ===== */
+.gradient-border {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+}
+
+/* ===== CARD SHIMMER ===== */
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.card-shimmer:hover::after {
+  left: 100%;
+}
+
+/* ===== GLOW HOVER ===== */
+.glow-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 40px rgba(0, 255, 136, 0.15), 0 0 20px rgba(0, 255, 136, 0.05);
+}
+
+/* ===== GLASS EFFECT ===== */
+.glass {
+  background: rgba(5, 10, 20, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+/* ===== SKILL BAR ===== */
+.skill-bar-bg {
+  background: rgba(0, 255, 136, 0.1);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  transition: width 1.5s ease-in-out;
+}
+
+/* ===== TIMELINE ===== */
+.timeline-line {
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+  transform-origin: top;
+}
+
+/* ===== HEXAGONAL PILL ===== */
+.hex-pill {
+  position: relative;
+  padding: 8px 20px;
+  background: rgba(0, 255, 136, 0.05);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.hex-pill:hover {
+  background: rgba(0, 255, 136, 0.15);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: screen;
+  transition: transform 0.1s ease;
+  box-shadow: 0 0 10px var(--accent-primary), 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(0, 255, 136, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  transition: all 0.15s ease-out;
+}
+
+.cursor-dot.hover,
+.cursor-ring.hover {
+  transform: scale(1.5);
+}
+
+/* ===== BOUNCE CHEVRON ===== */
+@keyframes bounceDown {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+
+  40% {
+    transform: translateY(-12px) translateX(-50%);
+  }
+
+  60% {
+    transform: translateY(-6px) translateX(-50%);
+  }
+}
+
+.bounce-chevron {
+  animation: bounceDown 2s infinite;
+}
+
+/* ===== SECTION PADDING ===== */
+section {
+  padding: 6rem 0;
+}
+
+/* ===== HAMBURGER ===== */
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger-active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ===== FORM INPUTS ===== */
+.form-input {
+  background: rgba(0, 255, 136, 0.05);
+  border: 1px solid rgba(0, 255, 136, 0.15);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+}
+
+/* ===== PULSE CIRCUIT ICON ===== */
+@keyframes pulseCircuit {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.3));
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.6));
+  }
+}
+
+.pulse-circuit {
+  animation: pulseCircuit 2s ease-in-out infinite;
+}
