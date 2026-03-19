@@ -91,8 +91,7 @@ const Hero = () => {
             <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
           </button>
           <a
-            href="https://drive.google.com/file/d/1-robMleupvRrmu7g_dYxt4Tk8Ac7Sww_/view?usp=sharing"
-            target="_blank"
+            href="https://drive.google.com/file/d/1lTCQKtUlfQll8T3eno6asi3eN_r2bwv-/view?usp=sharing"
             rel="noopener noreferrer"
             className="px-8 py-3.5 border border-accent-primary/50 text-accent-primary font-body font-semibold
               rounded-lg hover:bg-accent-primary/10 transition-all duration-300 flex items-center gap-2"
