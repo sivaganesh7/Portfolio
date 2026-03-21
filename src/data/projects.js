@@ -6,7 +6,7 @@ export const projects = [
     stack: ["Next.js", "React", "Tailwind", "FastAPI", "Node.js", "MongoDB", "Firebase", "Gemini AI", "Sentence-Transformers", "DistilBERT"],
     description: "An intelligent knowledge retrieval platform powered by AI that uses semantic search and NLP models to find and synthesize information from large document collections.",
     liveUrl: "#",
-    githubUrl: "https://github.com/sivaganesh7",
+    githubUrl: "https://github.com/sivaganesh7/AI-Cognitive-Knowledge-Retrieval-System.git",
     accent: "#00D4FF"
   },
   {
@@ -16,7 +16,7 @@ export const projects = [
     stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "bcrypt"],
     description: "A hospital management system for scheduling and tracking medical appointments with secure authentication and role-based access control.",
     liveUrl: "#",
-    githubUrl: "https://github.com/sivaganesh7",
+    githubUrl: "https://github.com/sivaganesh7/clinic_projects.git",
     accent: "#7B61FF"
   },
   {
@@ -26,7 +26,7 @@ export const projects = [
     stack: ["React Native", "Firebase", "Node.js", "RSS Feed", "Gemini API", "YouTube API"],
     description: "A mobile tech news aggregator with AI-powered summaries, curated RSS feeds, and integrated YouTube tech content.",
     liveUrl: "#",
-    githubUrl: "https://github.com/sivaganesh7",
+    githubUrl: "https://github.com/solo-leveling3/solo-leveling.git",
     accent: "#FF6B6B"
   },
   {
@@ -36,7 +36,7 @@ export const projects = [
     stack: ["Python FastAPI", "React.js", "MongoDB", "Gemini API", "ESP32", "REST APIs", "React Charts"],
     description: "IoT-based asset monitoring dashboard with real-time sensor data visualization, AI-powered anomaly detection, and predictive maintenance alerts.",
     liveUrl: "#",
-    githubUrl: "https://github.com/sivaganesh7",
+    githubUrl: "https://github.com/sivaganesh7/Team-Astras.git",
     accent: "#00FF88"
   },
   {
