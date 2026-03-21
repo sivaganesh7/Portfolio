@@ -113,7 +113,7 @@ const ProjectCard = ({ project }) => {
 
         {/* Buttons */}
         <div className="flex gap-3">
-          <a
+          {/* <a
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -122,7 +122,7 @@ const ProjectCard = ({ project }) => {
             data-cursor-hover
           >
             <ExternalLink size={14} /> Live Demo
-          </a>
+          </a> */}
           <a
             href={project.githubUrl}
             target="_blank"
