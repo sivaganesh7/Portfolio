@@ -1,29 +1,33 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const CustomCursor = () => {
-  const dotRef = useRef(null);
   const ringRef = useRef(null);
-  const [isTouch, setIsTouch] = useState(true);
 
   useEffect(() => {
-    // Disable on touch screens (smartphones, tablets) to save CPU/GPU cycles
-    const touch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
-    setIsTouch(touch);
-    if (touch) return;
+    // Only run if device has a fine pointer (mouse/trackpad)
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (!hasFinePointer) return;
 
-    const dot = dotRef.current;
     const ring = ringRef.current;
-    if (!dot || !ring) return;
+    if (!ring) return;
 
     let mouseX = -100, mouseY = -100;
     let ringX = -100, ringY = -100;
+    let isVisible = false;
     let rafId;
 
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      // Use GPU transform instead of layout-triggering top/left
-      dot.style.transform = `translate3d(${mouseX - 6}px, ${mouseY - 6}px, 0)`;
+      if (!isVisible) {
+        isVisible = true;
+        ring.style.opacity = '1';
+      }
+    };
+
+    const handleMouseLeave = () => {
+      isVisible = false;
+      ring.style.opacity = '0';
     };
 
     const animateRing = () => {
@@ -34,19 +38,17 @@ const CustomCursor = () => {
     };
 
     const handleMouseEnterInteractive = () => {
-      dot.classList.add('hover');
       ring.classList.add('hover');
     };
 
     const handleMouseLeaveInteractive = () => {
-      dot.classList.remove('hover');
       ring.classList.remove('hover');
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave);
     rafId = requestAnimationFrame(animateRing);
 
-    // Add hover detection on interactive elements
     const interactives = document.querySelectorAll('a, button, [data-cursor-hover]');
     interactives.forEach(el => {
       el.addEventListener('mouseenter', handleMouseEnterInteractive);
@@ -56,6 +58,7 @@ const CustomCursor = () => {
     return () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
       interactives.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnterInteractive);
         el.removeEventListener('mouseleave', handleMouseLeaveInteractive);
@@ -63,21 +66,12 @@ const CustomCursor = () => {
     };
   }, []);
 
-  if (isTouch) return null;
-
   return (
-    <>
-      <div 
-        ref={dotRef} 
-        className="cursor-dot fixed top-0 left-0 pointer-events-none z-[99999] hidden md:block" 
-        style={{ willChange: 'transform' }}
-      />
-      <div 
-        ref={ringRef} 
-        className="cursor-ring fixed top-0 left-0 pointer-events-none z-[99998] hidden md:block" 
-        style={{ willChange: 'transform' }}
-      />
-    </>
+    <div 
+      ref={ringRef} 
+      className="cursor-ring fixed top-0 left-0 pointer-events-none z-[99998] opacity-0 transition-opacity duration-300 hidden md:block" 
+      style={{ willChange: 'transform' }}
+    />
   );
 };
 

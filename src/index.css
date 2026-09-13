@@ -27,7 +27,11 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   overflow-x: hidden;
-  cursor: none;
+  cursor: default;
+}
+
+a, button, [role="button"], [data-cursor-hover] {
+  cursor: pointer;
 }
 
 /* Custom scrollbar */
