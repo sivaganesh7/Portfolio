@@ -9,12 +9,12 @@ const AISkills = () => {
   return (
     <section id="ai-arsenal" className="relative overflow-hidden">
       {/* Background circuit pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute top-0 left-0 w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(0,212,255,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,212,255,0.1) 1px, transparent 1px)
+              linear-gradient(rgba(108,60,233,0.2) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(108,60,233,0.2) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px'
           }}

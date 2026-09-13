@@ -72,7 +72,7 @@ const Experience = () => {
             >
               {/* Timeline dot */}
               <div
-                className={`absolute top-2 w-4 h-4 rounded-full bg-accent-primary shadow-[0_0_12px_rgba(0,212,255,0.5)]
+                className={`absolute top-2 w-4 h-4 rounded-full bg-accent-primary shadow-[0_0_12px_rgba(108,60,233,0.4)]
                   left-[9px] md:left-1/2 md:-translate-x-1/2`}
               />
 
@@ -93,7 +93,7 @@ const Experience = () => {
                   {exp.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
+                      className="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-primary/5 text-accent-primary border border-accent-primary/15"
                     >
                       {tech}
                     </span>

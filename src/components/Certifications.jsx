@@ -7,7 +7,7 @@ const Certifications = () => {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
 
   return (
-    <section id="certifications" className="bg-bg-secondary relative">
+    <section id="certifications" className="relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Title */}
         <motion.div
@@ -35,8 +35,8 @@ const Certifications = () => {
               className="gradient-border p-6 glow-hover card-shimmer group relative"
             >
               {/* Badge icon */}
-              <div className="w-12 h-12 rounded-xl bg-accent-primary/10 flex items-center justify-center mb-4 border border-accent-primary/20
-                group-hover:bg-accent-primary/20 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-accent-primary/5 flex items-center justify-center mb-4 border border-accent-primary/10
+                group-hover:bg-accent-primary/10 transition-all shadow-sm">
                 <Award className="text-accent-primary" size={24} />
               </div>
 
@@ -44,10 +44,10 @@ const Certifications = () => {
               <p className="text-accent-secondary font-body text-sm font-medium mb-3">{cert.issuer}</p>
 
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-primary/10 text-accent-primary border border-accent-primary/20">
+                <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-primary/5 text-accent-primary border border-accent-primary/12">
                   {cert.score}
                 </span>
-                <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-secondary/10 text-accent-secondary border border-accent-secondary/20">
+                <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-secondary/5 text-accent-secondary border border-accent-secondary/12">
                   {cert.year}
                 </span>
               </div>

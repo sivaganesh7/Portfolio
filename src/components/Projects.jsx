@@ -13,7 +13,7 @@ const Projects = () => {
     : projects.filter(p => p.category.includes(activeFilter));
 
   return (
-    <section id="projects" className="bg-bg-secondary relative">
+    <section id="projects" className="relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Title */}
         <motion.div
@@ -42,8 +42,8 @@ const Projects = () => {
               onClick={() => setActiveFilter(cat)}
               className={`px-5 py-2 rounded-full font-body text-sm font-medium transition-all duration-300
                 ${activeFilter === cat
-                  ? 'bg-accent-primary text-bg-primary shadow-[0_0_15px_rgba(0,212,255,0.3)]'
-                  : 'bg-bg-card text-text-muted border border-accent-primary/20 hover:border-accent-primary/50 hover:text-text-primary'
+                  ? 'bg-accent-primary text-white shadow-[0_4px_15px_rgba(108,60,233,0.3)]'
+                  : 'bg-white text-text-muted border border-accent-primary/12 hover:border-accent-primary/30 hover:text-text-primary shadow-sm'
                 }`}
               data-cursor-hover
             >
@@ -104,7 +104,7 @@ const ProjectCard = ({ project }) => {
           {project.stack.map((tech) => (
             <span
               key={tech}
-              className="text-[0.65rem] font-mono px-2 py-0.5 rounded-full bg-accent-primary/8 text-accent-primary/80 border border-accent-primary/15"
+              className="text-[0.65rem] font-mono px-2 py-0.5 rounded-full bg-accent-primary/5 text-accent-primary/80 border border-accent-primary/10"
             >
               {tech}
             </span>
@@ -127,8 +127,8 @@ const ProjectCard = ({ project }) => {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 bg-bg-card text-text-muted
-              rounded-lg text-sm font-body font-medium hover:text-text-primary hover:bg-bg-card/80 transition-all border border-accent-primary/10"
+            className="flex items-center gap-1.5 px-4 py-2 bg-bg-secondary text-text-muted
+              rounded-lg text-sm font-body font-medium hover:text-text-primary hover:bg-bg-secondary/80 transition-all border border-accent-primary/8"
             data-cursor-hover
           >
             <Github size={14} /> GitHub

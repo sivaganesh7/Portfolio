@@ -30,7 +30,7 @@ const About = () => {
   const { ref: eduRef, inView: eduInView } = useInView({ threshold: 0.2, triggerOnce: true });
 
   return (
-    <section id="about" className="bg-bg-secondary relative">
+    <section id="about" className="relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Title */}
         <motion.div
@@ -56,11 +56,13 @@ const About = () => {
             {/* Avatar */}
             <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-10">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-primary to-accent-secondary animate-pulse-glow" />
-              <div className="absolute inset-1 rounded-full bg-bg-card flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-1 rounded-full bg-bg-card flex items-center justify-center overflow-hidden shadow-lg">
                 <img 
-                  src="https://res.cloudinary.com/dcpa501nb/image/upload/v1773914100/WhatsApp_Image_2026-03-12_at_12.37.12_PM1_ln4dg4.jpg" 
+                  src="https://res.cloudinary.com/dcpa501nb/image/upload/q_auto,f_auto,w_500/v1773914100/WhatsApp_Image_2026-03-12_at_12.37.12_PM1_ln4dg4.jpg" 
                   alt="Siva Ganesh Pepakayala" 
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -110,7 +112,7 @@ const About = () => {
                 <GraduationCap className="text-accent-primary" size={22} />
                 Education
               </h3>
-              <div className="relative pl-6 border-l-2 border-accent-primary/30 space-y-8">
+              <div className="relative pl-6 border-l-2 border-accent-primary/20 space-y-8">
                 {education.map((edu, i) => (
                   <motion.div
                     key={edu.degree}
@@ -120,14 +122,14 @@ const About = () => {
                     className="relative"
                   >
                     {/* Dot */}
-                    <div className="absolute -left-[calc(0.75rem+1px)] top-1.5 w-3 h-3 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(0,212,255,0.5)]" />
+                    <div className="absolute -left-[calc(0.75rem+1px)] top-1.5 w-3 h-3 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(108,60,233,0.4)]" />
                     <h4 className="font-display font-semibold text-lg text-text-primary">{edu.degree}</h4>
                     <p className="text-text-muted text-sm font-body">{edu.school}</p>
                     <div className="flex flex-wrap gap-3 mt-2">
-                      <span className="text-xs font-mono px-2.5 py-1 rounded-full border border-accent-primary/30 text-accent-primary">
+                      <span className="text-xs font-mono px-2.5 py-1 rounded-full border border-accent-primary/20 text-accent-primary bg-accent-primary/5">
                         {edu.period}
                       </span>
-                      <span className="text-xs font-mono px-2.5 py-1 rounded-full border border-accent-secondary/30 text-accent-secondary">
+                      <span className="text-xs font-mono px-2.5 py-1 rounded-full border border-accent-secondary/20 text-accent-secondary bg-accent-secondary/5">
                         {edu.score}
                       </span>
                     </div>

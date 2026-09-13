@@ -3,7 +3,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-bg-secondary border-t border-accent-primary/10 py-8">
+    <footer className="relative bg-bg-secondary border-t border-accent-primary/8 py-8 mt-[-1.5rem] rounded-t-[2rem] z-10 shadow-[0_-8px_30px_rgba(108,60,233,0.04)]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           {/* Logo */}
@@ -16,7 +16,7 @@ const Footer = () => {
           {/* Copyright */}
           <p className="text-text-muted text-sm font-body flex items-center gap-1.5">
             © {new Date().getFullYear()} Siva Ganesh Pepakayala. Built with
-            <Heart size={14} className="text-red-400 fill-red-400" />
+            <Heart size={14} className="text-accent-secondary fill-accent-secondary" />
             and React
           </p>
 

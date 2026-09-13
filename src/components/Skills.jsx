@@ -6,7 +6,7 @@ const Skills = () => {
   const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
 
   return (
-    <section id="skills" className="bg-bg-secondary relative">
+    <section id="skills" className="relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Title */}
         <motion.div
