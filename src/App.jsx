@@ -160,8 +160,8 @@ function App() {
           <Contact />
         </div>
       </main>
-      <Footer />
-      <Toaster position="bottom-right" />
+      {/* <Footer />
+      <Toaster position="bottom-right" /> */}
     </>
   );
 }
